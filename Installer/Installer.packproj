@@ -26,11 +26,11 @@
 					<key>International</key>
 					<dict>
 						<key>Mode</key>
-						<integer>0</integer>
-						<key>Path</key>
-						<string></string>
-						<key>Path Type</key>
 						<integer>1</integer>
+						<key>Path</key>
+						<string>license.txt</string>
+						<key>Path Type</key>
+						<integer>2</integer>
 					</dict>
 				</dict>
 				<key>ReadMe</key>
