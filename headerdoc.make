@@ -34,16 +34,21 @@
 # @(#) $Id$
 ##
 
-SRC_DIR = $(PROJECT_DIR)/Source
-HDR_DIR = $(PROJECT_DIR)/headerdoc
+SRC_DIR := $(PROJECT_DIR)/Source
+HDR_DIR := $(PROJECT_DIR)/headerdoc
+TMP_DIR := $(shell mktemp -d -t headerdoc)
 
-HEADERDOC = headerdoc2html -C -t -u -o $(HDR_DIR)
-GATHERHEADERDOC = gatherheaderdoc $(HDR_DIR)
+HEADERDOC := headerdoc2html -C -t -u -o $(HDR_DIR)
+GATHERHEADERDOC := gatherheaderdoc $(TMP_DIR)/headerdoc index.html
 
-DOCS = $(patsubst $(SRC_DIR)/%.h,$(HDR_DIR)/%/index.html,$(wildcard $(SRC_DIR)/*.h))
+DOCS := $(patsubst $(SRC_DIR)/%.h,$(HDR_DIR)/%/index.html,$(wildcard $(SRC_DIR)/*.h))
 
-$(HDR_DIR)/MasterTOC.html : $(DOCS)
+$(HDR_DIR)/index.html : $(DOCS)
+	cp -Rp $(HDR_DIR) $(TMP_DIR)/
+	find $(TMP_DIR)/headerdoc -type d -name '.svn' -exec rm -rf {} +
 	$(GATHERHEADERDOC)
+	cp -R $(TMP_DIR)/headerdoc/ $(HDR_DIR)/
+	rm -rf $(TMP_DIR)
 
 $(DOCS) : $(HDR_DIR)/%/index.html : $(SRC_DIR)/%.h
 	$(HEADERDOC) $?
