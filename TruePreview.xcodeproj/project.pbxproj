@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		412B83CD0FF5E73900692EC8 /* headerdoc in Resources */ = {isa = PBXBuildFile; fileRef = 412B83670FF5E73900692EC8 /* headerdoc */; };
 		41E061680FF1C1010087845D /* Message.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E061670FF1C1010087845D /* Message.framework */; };
 		41E061710FF1C1900087845D /* TruePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E061700FF1C1900087845D /* TruePreview.m */; };
 		41E062BF0FF1C26F0087845D /* TruePreviewLibraryMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E062BE0FF1C26F0087845D /* TruePreviewLibraryMessage.m */; };
@@ -247,7 +246,6 @@
 			files = (
 				8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */,
 				41E063D70FF1CDCF0087845D /* TruePreviewPreferencesPanel.xib in Resources */,
-				412B83CD0FF5E73900692EC8 /* headerdoc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
