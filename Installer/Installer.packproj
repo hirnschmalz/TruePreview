@@ -184,56 +184,6 @@
 								</dict>
 								<dict>
 									<key>Children</key>
-									<array>
-										<dict>
-											<key>Children</key>
-											<array>
-												<dict>
-													<key>Children</key>
-													<array/>
-													<key>GID</key>
-													<integer>80</integer>
-													<key>Path</key>
-													<string>../build/Release/TruePreview.mailbundle</string>
-													<key>Path Type</key>
-													<integer>2</integer>
-													<key>Privileges</key>
-													<integer>511</integer>
-													<key>Type</key>
-													<integer>3</integer>
-													<key>UID</key>
-													<integer>0</integer>
-												</dict>
-											</array>
-											<key>GID</key>
-											<integer>80</integer>
-											<key>Path</key>
-											<string>Bundles</string>
-											<key>Path Type</key>
-											<integer>1</integer>
-											<key>Privileges</key>
-											<integer>509</integer>
-											<key>Type</key>
-											<integer>2</integer>
-											<key>UID</key>
-											<integer>0</integer>
-										</dict>
-									</array>
-									<key>GID</key>
-									<integer>80</integer>
-									<key>Path</key>
-									<string>Mail</string>
-									<key>Path Type</key>
-									<integer>1</integer>
-									<key>Privileges</key>
-									<integer>509</integer>
-									<key>Type</key>
-									<integer>2</integer>
-									<key>UID</key>
-									<integer>0</integer>
-								</dict>
-								<dict>
-									<key>Children</key>
 									<array/>
 									<key>GID</key>
 									<integer>80</integer>
@@ -334,6 +284,124 @@
 									<array>
 										<dict>
 											<key>Children</key>
+											<array>
+												<dict>
+													<key>Children</key>
+													<array>
+														<dict>
+															<key>Children</key>
+															<array>
+																<dict>
+																	<key>Children</key>
+																	<array>
+																		<dict>
+																			<key>Children</key>
+																			<array/>
+																			<key>GID</key>
+																			<integer>80</integer>
+																			<key>Path</key>
+																			<string>../build/Release/TruePreview.mailbundle</string>
+																			<key>Path Type</key>
+																			<integer>2</integer>
+																			<key>Privileges</key>
+																			<integer>511</integer>
+																			<key>Type</key>
+																			<integer>3</integer>
+																			<key>UID</key>
+																			<integer>0</integer>
+																		</dict>
+																	</array>
+																	<key>GID</key>
+																	<integer>80</integer>
+																	<key>Path</key>
+																	<string>Bundles</string>
+																	<key>Path Type</key>
+																	<integer>1</integer>
+																	<key>Privileges</key>
+																	<integer>509</integer>
+																	<key>Type</key>
+																	<integer>2</integer>
+																	<key>UID</key>
+																	<integer>0</integer>
+																</dict>
+															</array>
+															<key>GID</key>
+															<integer>80</integer>
+															<key>Path</key>
+															<string>Mail</string>
+															<key>Path Type</key>
+															<integer>1</integer>
+															<key>Privileges</key>
+															<integer>509</integer>
+															<key>Type</key>
+															<integer>2</integer>
+															<key>UID</key>
+															<integer>0</integer>
+														</dict>
+													</array>
+													<key>GID</key>
+													<integer>80</integer>
+													<key>Path</key>
+													<string>Library</string>
+													<key>Path Type</key>
+													<integer>1</integer>
+													<key>Privileges</key>
+													<integer>509</integer>
+													<key>Type</key>
+													<integer>2</integer>
+													<key>UID</key>
+													<integer>0</integer>
+												</dict>
+											</array>
+											<key>GID</key>
+											<integer>80</integer>
+											<key>Path</key>
+											<string>CurrentUser</string>
+											<key>Path Type</key>
+											<integer>1</integer>
+											<key>Privileges</key>
+											<integer>509</integer>
+											<key>Type</key>
+											<integer>2</integer>
+											<key>UID</key>
+											<integer>0</integer>
+										</dict>
+									</array>
+									<key>GID</key>
+									<integer>80</integer>
+									<key>Path</key>
+									<string>tmp</string>
+									<key>Path Type</key>
+									<integer>1</integer>
+									<key>Privileges</key>
+									<integer>509</integer>
+									<key>Type</key>
+									<integer>2</integer>
+									<key>UID</key>
+									<integer>0</integer>
+								</dict>
+							</array>
+							<key>GID</key>
+							<integer>80</integer>
+							<key>Path</key>
+							<string>private</string>
+							<key>Path Type</key>
+							<integer>1</integer>
+							<key>Privileges</key>
+							<integer>509</integer>
+							<key>Type</key>
+							<integer>2</integer>
+							<key>UID</key>
+							<integer>0</integer>
+						</dict>
+						<dict>
+							<key>Children</key>
+							<array>
+								<dict>
+									<key>Children</key>
+									<array>
+										<dict>
+											<key>Children</key>
 											<array/>
 											<key>GID</key>
 											<integer>0</integer>
@@ -391,7 +459,7 @@
 					<integer>0</integer>
 				</dict>
 				<key>IFPkgFlagDefaultLocation</key>
-				<string>/Library/Mail/Bundles</string>
+				<string>/private/tmp/CurrentUser/Library/Mail/Bundles</string>
 				<key>Imported Package</key>
 				<false/>
 				<key>Package Path</key>
@@ -482,9 +550,11 @@
 					<key>IFInstallationScriptsPreflight</key>
 					<dict>
 						<key>Path</key>
-						<string></string>
+						<string>preflight.sh</string>
+						<key>Path Type</key>
+						<integer>2</integer>
 						<key>Status</key>
-						<false/>
+						<true/>
 					</dict>
 					<key>IFInstallationScriptsPreinstall</key>
 					<dict>
@@ -540,9 +610,9 @@
 					<key>IFPkgFlagAllowBackRev</key>
 					<false/>
 					<key>IFPkgFlagAuthorizationAction</key>
-					<integer>1</integer>
+					<integer>0</integer>
 					<key>IFPkgFlagFollowLinks</key>
-					<false/>
+					<true/>
 					<key>IFPkgFlagIsRequired</key>
 					<false/>
 					<key>IFPkgFlagOverwritePermissions</key>
@@ -552,7 +622,7 @@
 					<key>IFPkgFlagRestartAction</key>
 					<integer>0</integer>
 					<key>IFPkgFlagRootVolumeOnly</key>
-					<false/>
+					<true/>
 					<key>IFPkgFlagUpdateInstalledLanguages</key>
 					<false/>
 				</dict>

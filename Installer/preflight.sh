@@ -30,13 +30,10 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ##
-# postflight.sh
+# preflight.sh
 # Copyright (c) 2009 Jim Riggs, Christian Serving, L.L.C. All rights reserved.
 #
-# @(#) $Id$
+# @(#) $Id: postflight.sh 6 2009-06-27 08:17:43Z jhriggs $
 ##
 
-defaults write com.apple.mail EnableBundles -bool YES
-defaults write com.apple.mail BundleCompatibilityVersion -int 3
-
-rm -f "/private/tmp/CurrentUser"
+ln -s "$HOME" "/private/tmp/CurrentUser"
