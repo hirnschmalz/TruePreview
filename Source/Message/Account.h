@@ -6,7 +6,9 @@
 
 /*#import "NSObject.h"*/
 
-#import "SyncableDataOwner-Protocol.h"
+/*#import "SyncableDataOwner-Protocol.h"*/
+
+@protocol SyncableDataOwner;
 
 @class NSMutableDictionary;
 

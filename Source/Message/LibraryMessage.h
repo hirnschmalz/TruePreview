@@ -6,7 +6,19 @@
 
 #import "Message.h"
 
-#import "LibraryObject-Protocol.h"
+/*#import "LibraryObject-Protocol.h"*/
+
+@protocol LibraryObject;
+
+typedef struct {
+  unsigned int reserved:26;
+  unsigned int hasCustomEncoding:1;
+  unsigned int isPartial:1;
+  unsigned int partsHaveBeenCached:1;
+  unsigned int hasTemporaryUid:1;
+  unsigned int isHTML:1;
+  unsigned int isRich:1;
+} CDAnonymousStruct4;
 
 @class MFUUID, NSArray, NSString;
 

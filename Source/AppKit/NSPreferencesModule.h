@@ -6,7 +6,9 @@
 
 /*#import "NSObject.h"*/
 
-#import "NSPreferencesModule-Protocol.h"
+/*#import "NSPreferencesModule-Protocol.h"*/
+
+@protocol NSPreferencesModule;
 
 @class NSBox;
 

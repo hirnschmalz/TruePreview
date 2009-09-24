@@ -6,7 +6,9 @@
 
 /*#import "NSObject.h"*/
 
-#import "MessageBrowserController-Protocol.h"
+/*#import "MessageBrowserController-Protocol.h"*/
+
+@protocol MessageBrowserController;
 
 @class ASExtendedTableView, BytesFormatter, Message, MessageMall, MessageThread, NSArray, NSDictionary, NSFont, /*NSMapTable,*/ NSMutableArray, NSMutableAttributedString, NSMutableDictionary, NSMutableSet, NSString, VisibleStateObject;
 
