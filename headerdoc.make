@@ -41,7 +41,7 @@ TMP_DIR := $(shell mktemp -d -t headerdoc)
 HEADERDOC := headerdoc2html -C -t -u -o $(HDR_DIR)
 GATHERHEADERDOC := gatherheaderdoc $(TMP_DIR)/headerdoc index.html
 
-DOCS := $(patsubst $(SRC_DIR)/%.h,$(HDR_DIR)/%/index.html,$(wildcard $(SRC_DIR)/*.h))
+DOCS := $(patsubst $(SRC_DIR)/%.h,$(HDR_DIR)/%_h/index.html,$(wildcard $(SRC_DIR)/*.h))
 
 $(HDR_DIR)/index.html : $(DOCS)
 	cp -Rp $(HDR_DIR) $(TMP_DIR)/
@@ -50,5 +50,5 @@ $(HDR_DIR)/index.html : $(DOCS)
 	cp -R $(TMP_DIR)/headerdoc/ $(HDR_DIR)/
 	rm -rf $(TMP_DIR)
 
-$(DOCS) : $(HDR_DIR)/%/index.html : $(SRC_DIR)/%.h
+$(DOCS) : $(HDR_DIR)/%_h/index.html : $(SRC_DIR)/%.h
 	$(HEADERDOC) $?
