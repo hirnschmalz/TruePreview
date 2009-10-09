@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		412C2856106F1E28005F5DC9 /* TruePreviewPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 412C2855106F1E28005F5DC9 /* TruePreviewPreferences.m */; };
+		412C292D107047A4005F5DC9 /* TruePreviewPreferencesModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 412C292C107047A4005F5DC9 /* TruePreviewPreferencesModule.m */; };
+		412C299110723A34005F5DC9 /* TruePreviewLibraryMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 412C299010723A34005F5DC9 /* TruePreviewLibraryMessage.m */; };
+		412C29FA1072E68D005F5DC9 /* TruePreviewPreferenceValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 412C29F91072E68D005F5DC9 /* TruePreviewPreferenceValueTransformer.m */; };
+		412C2A501072F901005F5DC9 /* TruePreviewMessageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 412C2A4F1072F901005F5DC9 /* TruePreviewMessageViewer.m */; };
 		41E061680FF1C1010087845D /* Message.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E061670FF1C1010087845D /* Message.framework */; };
 		41E061710FF1C1900087845D /* TruePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E061700FF1C1900087845D /* TruePreview.m */; };
-		41E062BF0FF1C26F0087845D /* TruePreviewLibraryMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E062BE0FF1C26F0087845D /* TruePreviewLibraryMessage.m */; };
-		41E063120FF1C5200087845D /* TruePreviewPreferencesModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E063110FF1C5200087845D /* TruePreviewPreferencesModule.m */; };
 		41E063D70FF1CDCF0087845D /* TruePreviewPreferencesPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41E063D60FF1CDCF0087845D /* TruePreviewPreferencesPanel.xib */; };
-		41E066770FF3B2B20087845D /* TruePreviewPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E066760FF3B2B20087845D /* TruePreviewPreferences.m */; };
-		41E067FE0FF4F5520087845D /* TruePreviewTableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E067FD0FF4F5520087845D /* TruePreviewTableViewManager.m */; };
 		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -26,34 +27,21 @@
 		32DBCF630370AF2F00C91783 /* TruePreview_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TruePreview_Prefix.pch; path = Source/TruePreview_Prefix.pch; sourceTree = "<group>"; };
 		412B835E0FF5E5AE00692EC8 /* headerdoc.make */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = headerdoc.make; sourceTree = "<group>"; };
 		412B83670FF5E73900692EC8 /* headerdoc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = headerdoc; sourceTree = "<group>"; };
+		412C2854106F1E28005F5DC9 /* TruePreviewPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TruePreviewPreferences.h; path = Source/TruePreviewPreferences.h; sourceTree = "<group>"; };
+		412C2855106F1E28005F5DC9 /* TruePreviewPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TruePreviewPreferences.m; path = Source/TruePreviewPreferences.m; sourceTree = "<group>"; };
+		412C292B107047A4005F5DC9 /* TruePreviewPreferencesModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TruePreviewPreferencesModule.h; path = Source/TruePreviewPreferencesModule.h; sourceTree = "<group>"; };
+		412C292C107047A4005F5DC9 /* TruePreviewPreferencesModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TruePreviewPreferencesModule.m; path = Source/TruePreviewPreferencesModule.m; sourceTree = "<group>"; };
+		412C297F10723A12005F5DC9 /* TruePreviewLibraryMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TruePreviewLibraryMessage.h; path = Source/TruePreviewLibraryMessage.h; sourceTree = "<group>"; };
+		412C299010723A34005F5DC9 /* TruePreviewLibraryMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TruePreviewLibraryMessage.m; path = Source/TruePreviewLibraryMessage.m; sourceTree = "<group>"; };
+		412C29F81072E68D005F5DC9 /* TruePreviewPreferenceValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TruePreviewPreferenceValueTransformer.h; path = Source/TruePreviewPreferenceValueTransformer.h; sourceTree = "<group>"; };
+		412C29F91072E68D005F5DC9 /* TruePreviewPreferenceValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TruePreviewPreferenceValueTransformer.m; path = Source/TruePreviewPreferenceValueTransformer.m; sourceTree = "<group>"; };
+		412C2A4E1072F901005F5DC9 /* TruePreviewMessageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TruePreviewMessageViewer.h; path = Source/TruePreviewMessageViewer.h; sourceTree = "<group>"; };
+		412C2A4F1072F901005F5DC9 /* TruePreviewMessageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TruePreviewMessageViewer.m; path = Source/TruePreviewMessageViewer.m; sourceTree = "<group>"; };
+		412C2D61107EB8DA005F5DC9 /* NSPreferencesModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSPreferencesModule.h; sourceTree = "<group>"; };
 		41E061670FF1C1010087845D /* Message.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Message.framework; path = /System/Library/Frameworks/Message.framework; sourceTree = "<absolute>"; };
 		41E0616F0FF1C1900087845D /* TruePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TruePreview.h; path = Source/TruePreview.h; sourceTree = "<group>"; };
 		41E061700FF1C1900087845D /* TruePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TruePreview.m; path = Source/TruePreview.m; sourceTree = "<group>"; };
-		41E062BD0FF1C26F0087845D /* TruePreviewLibraryMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TruePreviewLibraryMessage.h; path = Source/TruePreviewLibraryMessage.h; sourceTree = "<group>"; };
-		41E062BE0FF1C26F0087845D /* TruePreviewLibraryMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TruePreviewLibraryMessage.m; path = Source/TruePreviewLibraryMessage.m; sourceTree = "<group>"; };
-		41E063100FF1C5200087845D /* TruePreviewPreferencesModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TruePreviewPreferencesModule.h; path = Source/TruePreviewPreferencesModule.h; sourceTree = "<group>"; };
-		41E063110FF1C5200087845D /* TruePreviewPreferencesModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TruePreviewPreferencesModule.m; path = Source/TruePreviewPreferencesModule.m; sourceTree = "<group>"; };
 		41E063D40FF1CDC90087845D /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TruePreviewPreferencesPanel.xib; sourceTree = "<group>"; };
-		41E065910FF3A8270087845D /* NSPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSPreferences.h; sourceTree = "<group>"; };
-		41E065920FF3A8270087845D /* NSPreferencesModule-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPreferencesModule-Protocol.h"; sourceTree = "<group>"; };
-		41E065930FF3A8270087845D /* NSPreferencesModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSPreferencesModule.h; sourceTree = "<group>"; };
-		41E065980FF3A8270087845D /* MVMailBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMailBundle.h; sourceTree = "<group>"; };
-		41E0659A0FF3A8270087845D /* CDStructures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDStructures.h; sourceTree = "<group>"; };
-		41E0659B0FF3A8270087845D /* IMAPObject-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IMAPObject-Protocol.h"; sourceTree = "<group>"; };
-		41E0659C0FF3A8270087845D /* LibraryMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryMessage.h; sourceTree = "<group>"; };
-		41E0659D0FF3A8270087845D /* LibraryObject-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LibraryObject-Protocol.h"; sourceTree = "<group>"; };
-		41E0659E0FF3A8270087845D /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		41E0659F0FF3A8270087845D /* MFChanging-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MFChanging-Protocol.h"; sourceTree = "<group>"; };
-		41E066750FF3B2B20087845D /* TruePreviewPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TruePreviewPreferences.h; path = Source/TruePreviewPreferences.h; sourceTree = "<group>"; };
-		41E066760FF3B2B20087845D /* TruePreviewPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TruePreviewPreferences.m; path = Source/TruePreviewPreferences.m; sourceTree = "<group>"; };
-		41E067FC0FF4F5520087845D /* TruePreviewTableViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TruePreviewTableViewManager.h; path = Source/TruePreviewTableViewManager.h; sourceTree = "<group>"; };
-		41E067FD0FF4F5520087845D /* TruePreviewTableViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TruePreviewTableViewManager.m; path = Source/TruePreviewTableViewManager.m; sourceTree = "<group>"; };
-		41E0693C0FF568980087845D /* TableViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewManager.h; sourceTree = "<group>"; };
-		41E0694E0FF568E40087845D /* MessageBrowserController-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MessageBrowserController-Protocol.h"; sourceTree = "<group>"; };
-		41E069510FF569010087845D /* MVSelectionOwner-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MVSelectionOwner-Protocol.h"; sourceTree = "<group>"; };
-		41E06A790FF5A0FC0087845D /* MailAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailAccount.h; sourceTree = "<group>"; };
-		41E06A7B0FF5A1190087845D /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
-		41E06A820FF5A1550087845D /* SyncableDataOwner-Protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SyncableDataOwner-Protocol.h"; sourceTree = "<group>"; };
 		8D5B49B6048680CD000E48DA /* TruePreview.mailbundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TruePreview.mailbundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2F7E65807B2D6F200F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -110,14 +98,16 @@
 			children = (
 				41E0616F0FF1C1900087845D /* TruePreview.h */,
 				41E061700FF1C1900087845D /* TruePreview.m */,
-				41E062BD0FF1C26F0087845D /* TruePreviewLibraryMessage.h */,
-				41E062BE0FF1C26F0087845D /* TruePreviewLibraryMessage.m */,
-				41E066750FF3B2B20087845D /* TruePreviewPreferences.h */,
-				41E066760FF3B2B20087845D /* TruePreviewPreferences.m */,
-				41E063100FF1C5200087845D /* TruePreviewPreferencesModule.h */,
-				41E063110FF1C5200087845D /* TruePreviewPreferencesModule.m */,
-				41E067FC0FF4F5520087845D /* TruePreviewTableViewManager.h */,
-				41E067FD0FF4F5520087845D /* TruePreviewTableViewManager.m */,
+				412C297F10723A12005F5DC9 /* TruePreviewLibraryMessage.h */,
+				412C299010723A34005F5DC9 /* TruePreviewLibraryMessage.m */,
+				412C2A4E1072F901005F5DC9 /* TruePreviewMessageViewer.h */,
+				412C2A4F1072F901005F5DC9 /* TruePreviewMessageViewer.m */,
+				412C2854106F1E28005F5DC9 /* TruePreviewPreferences.h */,
+				412C2855106F1E28005F5DC9 /* TruePreviewPreferences.m */,
+				412C292B107047A4005F5DC9 /* TruePreviewPreferencesModule.h */,
+				412C292C107047A4005F5DC9 /* TruePreviewPreferencesModule.m */,
+				412C29F81072E68D005F5DC9 /* TruePreviewPreferenceValueTransformer.h */,
+				412C29F91072E68D005F5DC9 /* TruePreviewPreferenceValueTransformer.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -153,51 +143,18 @@
 			isa = PBXGroup;
 			children = (
 				32DBCF630370AF2F00C91783 /* TruePreview_Prefix.pch */,
-				41E065900FF3A8270087845D /* AppKit */,
-				41E065970FF3A8270087845D /* Mail */,
-				41E065990FF3A8270087845D /* Message */,
+				412C2D60107EB8DA005F5DC9 /* AppKit */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		41E065900FF3A8270087845D /* AppKit */ = {
+		412C2D60107EB8DA005F5DC9 /* AppKit */ = {
 			isa = PBXGroup;
 			children = (
-				41E065910FF3A8270087845D /* NSPreferences.h */,
-				41E065920FF3A8270087845D /* NSPreferencesModule-Protocol.h */,
-				41E065930FF3A8270087845D /* NSPreferencesModule.h */,
+				412C2D61107EB8DA005F5DC9 /* NSPreferencesModule.h */,
 			);
 			name = AppKit;
 			path = Source/AppKit;
-			sourceTree = "<group>";
-		};
-		41E065970FF3A8270087845D /* Mail */ = {
-			isa = PBXGroup;
-			children = (
-				41E0694E0FF568E40087845D /* MessageBrowserController-Protocol.h */,
-				41E065980FF3A8270087845D /* MVMailBundle.h */,
-				41E069510FF569010087845D /* MVSelectionOwner-Protocol.h */,
-				41E0693C0FF568980087845D /* TableViewManager.h */,
-			);
-			name = Mail;
-			path = Source/Mail;
-			sourceTree = "<group>";
-		};
-		41E065990FF3A8270087845D /* Message */ = {
-			isa = PBXGroup;
-			children = (
-				41E06A7B0FF5A1190087845D /* Account.h */,
-				41E0659A0FF3A8270087845D /* CDStructures.h */,
-				41E0659B0FF3A8270087845D /* IMAPObject-Protocol.h */,
-				41E0659C0FF3A8270087845D /* LibraryMessage.h */,
-				41E0659D0FF3A8270087845D /* LibraryObject-Protocol.h */,
-				41E06A790FF5A0FC0087845D /* MailAccount.h */,
-				41E0659E0FF3A8270087845D /* Message.h */,
-				41E0659F0FF3A8270087845D /* MFChanging-Protocol.h */,
-				41E06A820FF5A1550087845D /* SyncableDataOwner-Protocol.h */,
-			);
-			name = Message;
-			path = Source/Message;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,10 +231,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				41E061710FF1C1900087845D /* TruePreview.m in Sources */,
-				41E062BF0FF1C26F0087845D /* TruePreviewLibraryMessage.m in Sources */,
-				41E063120FF1C5200087845D /* TruePreviewPreferencesModule.m in Sources */,
-				41E066770FF3B2B20087845D /* TruePreviewPreferences.m in Sources */,
-				41E067FE0FF4F5520087845D /* TruePreviewTableViewManager.m in Sources */,
+				412C2856106F1E28005F5DC9 /* TruePreviewPreferences.m in Sources */,
+				412C292D107047A4005F5DC9 /* TruePreviewPreferencesModule.m in Sources */,
+				412C299110723A34005F5DC9 /* TruePreviewLibraryMessage.m in Sources */,
+				412C29FA1072E68D005F5DC9 /* TruePreviewPreferenceValueTransformer.m in Sources */,
+				412C2A501072F901005F5DC9 /* TruePreviewMessageViewer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,21 +297,25 @@
 		1DEB913F08733D840010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				BUNDLE_LOADER = /Applications/Mail.app/Contents/MacOS/Mail;
 				DEBUG_INFORMATION_FORMAT = stabs;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "Source/**";
-				ONLY_ACTIVE_ARCH = YES;
+				MACH_O_TYPE = mh_bundle;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-undefined",
 					dynamic_lookup,
 				);
 				PREBINDING = NO;
-				SDKROOT = macosx10.4;
+				SDKROOT = macosx10.6;
+				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = mailbundle;
 			};
 			name = Debug;
@@ -361,18 +323,23 @@
 		1DEB914008733D840010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				BUNDLE_LOADER = /Applications/Mail.app/Contents/MacOS/Mail;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "Source/**";
+				MACH_O_TYPE = mh_bundle;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-undefined",
 					dynamic_lookup,
 				);
 				PREBINDING = NO;
-				SDKROOT = macosx10.4;
+				SDKROOT = macosx10.6;
+				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = mailbundle;
 			};
 			name = Release;

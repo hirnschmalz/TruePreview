@@ -36,31 +36,79 @@
 #pragma mark Class initialization
 
 + (void)initialize {
-  [TruePreview registerBundle];
+  if (self == [TruePreview class]) {
+    class_setSuperclass(self, NSClassFromString(@"MVMailBundle"));
+  }
+
+  [super registerBundle];
+  
+  // register the preferences value transformers
+  [NSValueTransformer
+    setValueTransformer:[[TruePreviewPreferenceValueTransformer alloc] init]
+    forName:@"TruePreviewPreferenceValueTransformer"
+  ];
+  [NSValueTransformer
+    setValueTransformer:[[TruePreviewPreferenceValueTransformerDelay alloc] init]
+    forName:@"TruePreviewPreferenceValueTransformerDelay"
+  ];
+  [NSValueTransformer
+    setValueTransformer:[[TruePreviewPreferenceValueTransformerDelayEditIndicator alloc] init]
+    forName:@"TruePreviewPreferenceValueTransformerDelayEditIndicator"
+  ];
+  
+  // add our "categories"
+  [TruePreviewLibraryMessage truePreviewAddAsCategoryToClass:NSClassFromString(@"LibraryMessage")];
+  [TruePreviewMessageViewer truePreviewAddAsCategoryToClass:NSClassFromString(@"MessageViewer")];
+  [TruePreviewPreferences truePreviewAddAsCategoryToClass:NSClassFromString(@"NSPreferences")];
   
   // do our swizzles
-  [NSPreferences
-    truePreviewSwizzleMethod:@selector(sharedPreferences)
-    withMethod:@selector(truePreviewSharedPreferences)
-    isClassMethod:YES
-  ];
-  [LibraryMessage
+  [NSClassFromString(@"LibraryMessage")
     truePreviewSwizzleMethod:@selector(markAsViewed)
     withMethod:@selector(truePreviewMarkAsViewed)
     isClassMethod:NO
   ];
-  [TableViewManager
-    truePreviewSwizzleMethod:@selector(setCurrentDisplayedMessage:)
-    withMethod:@selector(truePreviewSetCurrentDisplayedMessage:)
+  [NSClassFromString(@"MessageViewer")
+    truePreviewSwizzleMethod:@selector(dealloc)
+    withMethod:@selector(truePreviewDealloc)
     isClassMethod:NO
   ];
+  [NSClassFromString(@"MessageViewer")
+    truePreviewSwizzleMethod:@selector(markAsRead:)
+    withMethod:@selector(truePreviewMarkAsRead:)
+    isClassMethod:NO
+  ];
+  [NSClassFromString(@"MessageViewer")
+    truePreviewSwizzleMethod:@selector(markAsUnread:)
+    withMethod:@selector(truePreviewMarkAsUnread:)
+    isClassMethod:NO
+  ];
+  [NSClassFromString(@"MessageViewer")
+    truePreviewSwizzleMethod:@selector(messageWasDisplayedInTextView:)
+    withMethod:@selector(truePreviewMessageWasDisplayedInTextView:)
+    isClassMethod:NO
+  ];
+  [NSClassFromString(@"MessageViewer")
+    truePreviewSwizzleMethod:@selector(messageNoLongerDisplayedInTextView:)
+    withMethod:@selector(truePreviewMessageNoLongerDisplayedInTextView:)
+    isClassMethod:NO
+  ];
+  [NSClassFromString(@"NSPreferences")
+   truePreviewSwizzleMethod:@selector(sharedPreferences)
+   withMethod:@selector(truePreviewSharedPreferences)
+   isClassMethod:YES
+   ];
   
+  // set defaults
   [[NSUserDefaults standardUserDefaults]
-    registerDefaults:[NSDictionary
-      dictionaryWithObject:[NSNumber numberWithInt:0] forKey:@"TruePreviewDelay"
+    registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
+      [NSNumber numberWithInt:TRUEPREVIEW_DELAY_IMMEDIATE], @"TruePreviewDelay",
+      [NSNumber numberWithInt:NSOnState], @"TruePreviewWindow",
+      [NSNumber numberWithInt:NSOffState], @"TruePreviewScroll",
+      nil
     ]
   ];
   
+  // we're all set
 	NSLog(
     @"Loaded TruePreview plugin %@",
     [[NSBundle bundleForClass:[TruePreview class]] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]
@@ -74,7 +122,7 @@
 }
 
 + (NSString*)preferencesOwnerClassName {
-  return NSStringFromClass([TruePreviewPreferencesModule class]);
+  return @"TruePreviewPreferencesModule";
 }
 
 + (NSString*)preferencesPanelName {
@@ -87,6 +135,44 @@
 
 #pragma mark Class methods
 
++ (void)truePreviewAddAsCategoryToClass:(Class)inClass {
+  unsigned int theCount = 0;
+  Method* theMethods = class_copyMethodList(object_getClass([self class]), &theCount);
+  Class theClass = object_getClass(inClass);
+  unsigned int i = 0;
+  
+  while (YES) {
+    for (i = 0; i < theCount; i++) {
+      if (
+        !class_addMethod(
+          theClass,
+          method_getName(theMethods[i]),
+          method_getImplementation(theMethods[i]),
+          method_getTypeEncoding(theMethods[i])
+        )
+      ) {
+        NSLog(
+          @"truePreviewAddAsCategoryToClass: could not add %@ to %@",
+          NSStringFromSelector(method_getName(theMethods[i])),
+          inClass
+        );
+      }
+    }
+    
+    if (theMethods != nil) {
+      free(theMethods);
+    }
+    
+    if (theClass != inClass) {
+      theClass = inClass;
+      theMethods = class_copyMethodList([self class], &theCount);
+    }
+    else {
+      break;
+    }
+  }
+}
+
 + (void)truePreviewSwizzleMethod:(SEL)inOriginalSelector withMethod:(SEL)inReplacementSelector isClassMethod:(BOOL)inIsClassMethod {
   Method theOriginalMethod = (!inIsClassMethod
     ? class_getInstanceMethod([self class], inOriginalSelector)
@@ -97,19 +183,7 @@
     : class_getClassMethod([self class], inReplacementSelector)
   );
 
-#if __OBJC2__
   method_exchangeImplementations(theOriginalMethod, theReplacementMethod);
-#else
-  char* theOriginalTypes = theOriginalMethod->method_types;
-
-  theOriginalMethod->method_types = theReplacementMethod->method_types;
-  theReplacementMethod->method_types = theOriginalTypes;
-
-  IMP theOriginalImp = theOriginalMethod->method_imp;
-  
-  theOriginalMethod->method_imp = theReplacementMethod->method_imp;
-  theReplacementMethod->method_imp = theOriginalImp;
-#endif
 }
 
 @end

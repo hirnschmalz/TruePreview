@@ -41,31 +41,27 @@
 
 - (void)willBeDisplayed {
   [super willBeDisplayed];
-  
+
   // build the list of accounts
   NSDictionary* theAccountDict = [[NSUserDefaults standardUserDefaults] objectForKey:@"TruePreviewAccountSettings"];
   NSMutableArray* theAccounts = [NSMutableArray array];
-  NSEnumerator* theEnum = [[[MailAccount remoteAccounts] valueForKey:@"displayName"] objectEnumerator];
+  NSEnumerator* theEnum = [[[NSClassFromString(@"MailAccount") remoteAccounts] valueForKey:@"displayName"] objectEnumerator];
   NSString* theDisplayName = nil;
-  
+
   while (theDisplayName = [theEnum nextObject]) {
-    NSMutableDictionary* theAccount = [[theAccountDict objectForKey:theDisplayName] mutableCopy];
-    [theAccounts
-      addObject:((theAccount == nil)  
-        ? [NSMutableDictionary dictionaryWithObject:theDisplayName forKey:@"displayName"]
-        : theAccount
-      )
+    NSMutableDictionary* theAccount = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+      theDisplayName, @"displayName",
+      [NSNumber numberWithInt:TRUEPREVIEW_DELAY_DEFAULT], @"delay",
+      [NSNumber numberWithInt:TRUEPREVIEW_DELAY_DEFAULT], @"window",
+      [NSNumber numberWithInt:TRUEPREVIEW_DELAY_DEFAULT], @"scroll",
+      nil
     ];
+    
+    [theAccount addEntriesFromDictionary:[theAccountDict objectForKey:theDisplayName]];
+    [theAccounts addObject:theAccount];
   }
 
   // watch the array for changes to save the user defaults
-  [theAccounts
-    addObserver:self
-    toObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [theAccounts count])]
-    forKeyPath:@"custom"
-    options:0
-    context:theAccounts
-  ];
   [theAccounts
     addObserver:self
     toObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [theAccounts count])]
@@ -73,7 +69,21 @@
     options:0
     context:theAccounts
   ];
-  
+  [theAccounts
+    addObserver:self
+    toObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [theAccounts count])]
+    forKeyPath:@"window"
+    options:0
+    context:theAccounts
+  ];
+  [theAccounts
+    addObserver:self
+    toObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [theAccounts count])]
+    forKeyPath:@"scroll"
+    options:0
+    context:theAccounts
+  ];
+
   [fldAccountArrayController setContent:theAccounts];
 }
 
@@ -93,6 +103,7 @@
   }
   
   [[NSUserDefaults standardUserDefaults] setObject:theAccountDict forKey:@"TruePreviewAccountSettings"];
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

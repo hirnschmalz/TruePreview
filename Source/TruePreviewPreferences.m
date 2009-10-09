@@ -31,24 +31,24 @@
 
 #import "TruePreviewPreferences.h"
 
-@implementation NSPreferences (TruePreviewPreferences)
+@implementation TruePreviewPreferences
 
-#pragma mark Class methods
+#pragma mark Swizzled class methods
 
 + (id)truePreviewSharedPreferences {
   static BOOL sAdded = NO;
-  NSPreferences* thePreferences = [NSPreferences truePreviewSharedPreferences];
+  id thePreferences = [NSClassFromString(@"NSPreferences") truePreviewSharedPreferences];
   
   if ((thePreferences != nil) && !sAdded) {
     sAdded = YES;
     
-    [[NSPreferences truePreviewSharedPreferences]
+    [[NSClassFromString(@"NSPreferences") truePreviewSharedPreferences]
       addPreferenceNamed:[TruePreview preferencesPanelName]
       owner:[TruePreviewPreferencesModule sharedInstance]
     ];
   }
   
-  return [NSPreferences truePreviewSharedPreferences];
+  return [NSClassFromString(@"NSPreferences") truePreviewSharedPreferences];
 }
 
 @end

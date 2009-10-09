@@ -38,26 +38,38 @@
  * @updated $Date$
  */
 
-#import <Message/LibraryMessage.h>
-
 #import "TruePreview.h"
 
 /*!
- * @category
+ * @class
  * Adds a method for overriding the "mark as viewed" behavior of
  * <code>LibraryMessage</code>.
  * @version \@(#) $Id$
  * @updated $Date$
  */
-@interface LibraryMessage (TruePreviewLibraryMessage)
+@interface TruePreviewLibraryMessage : NSObject {
+}
+
+#pragma mark Swizzled instance methods
+/*! @group Swizzled instance methods */
+
+/*!
+ * Does nothing.  The replacement behavior is handled in
+ * <code>TruePreviewMessageViewer</code>.
+ */
+- (void)truePreviewMarkAsViewed;
 
 #pragma mark Instance methods
 /*! @group Instance methods */
 
 /*!
- * Does nothing.  The replacement behavior is handled in
- * <code>-[TableViewManager setCurrentDisplayedMessage]</code>.
+ * Returns the TruePreview settings appropriate for this message.
+ * @result
+ *   An <code>NSMutableDictionary</code> containing the keys <code>delay</code>,
+ *   <code>window</code>, and <code>scroll</code> and their respective values
+ *   based on the default settings and/or the settings for this message's
+ *   account.
  */
-- (void)truePreviewMarkAsViewed;
+- (NSMutableDictionary*)truePreviewSettings;
 
 @end

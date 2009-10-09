@@ -41,21 +41,21 @@
 
 #import <objc/objc-class.h>
 
-#import <Mail/MVMailBundle.h>
-#import <Mail/TableViewManager.h>
-#import <Message/LibraryMessage.h>
-
+#import "TruePreviewLibraryMessage.h"
+#import "TruePreviewMessageViewer.h"
+#import "TruePreviewPreferences.h"
 #import "TruePreviewPreferencesModule.h"
+#import "TruePreviewPreferenceValueTransformer.h"
 
 /*!
  * @class
  * The <code>TruePreview</code> class is the subclass of
- * <code>MVMailBundle</code> that provide the plugin entrypoint for the
+ * <code>MVMailBundle</code> that provides the plugin entrypoint for the
  * TruePreview plugin.
  * @version \@(#) $Id$
  * @updated $Date$
  */
-@interface TruePreview : MVMailBundle {
+@interface TruePreview : NSObject {
 }
 
 #pragma mark Class initialization
@@ -103,6 +103,15 @@
 
 #pragma mark Class methods
 /*! @group Class methods */
+
+/*!
+ * Adds the methods from this class to the specified class.  This is in essence
+ * adding a category, but we do it through the objective-c runtime, because of
+ * the "hiding" of classes in >= 10.6.
+ * @param inClass
+ *   The <code>Class</code> to which this class's methods should be added.
+ */
++ (void)truePreviewAddAsCategoryToClass:(Class)inClass;
 
 /*!
  * Swaps ("swizzles") two methods.  Based on

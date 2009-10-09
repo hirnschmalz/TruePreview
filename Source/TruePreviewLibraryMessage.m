@@ -31,12 +31,39 @@
 
 #import "TruePreviewLibraryMessage.h"
 
-@implementation LibraryMessage (TruePreviewLibraryMessage)
+@implementation TruePreviewLibraryMessage
 
-#pragma mark Instance methods
+#pragma mark Swizzled instance methods
 
 - (void)truePreviewMarkAsViewed {
   /* nothing */
+}
+
+#pragma mark Instance methods
+
+- (NSMutableDictionary*)truePreviewSettings {
+  NSMutableDictionary* theSettings = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+    [[NSUserDefaults standardUserDefaults] objectForKey:@"TruePreviewDelay"], @"delay",
+    [[NSUserDefaults standardUserDefaults] objectForKey:@"TruePreviewWindow"], @"window",
+    [[NSUserDefaults standardUserDefaults] objectForKey:@"TruePreviewScroll"], @"scroll",
+    nil
+  ];
+  NSMutableDictionary* theAccountSettings = [
+    [[NSUserDefaults standardUserDefaults] objectForKey:@"TruePreviewAccountSettings"]
+    objectForKey:[[self account] displayName]
+  ];
+  
+  if (theAccountSettings != nil) {
+    for (id theKey in [NSArray arrayWithObjects:@"delay", @"window", @"scroll", nil]) {
+      id theValue = [theAccountSettings objectForKey:theKey];
+      
+      if ((theValue != nil) && ([theValue intValue] != TRUEPREVIEW_DELAY_DEFAULT)) {
+        [theSettings setObject:theValue forKey:theKey];
+      }
+    }
+  }
+  
+  return theSettings;
 }
 
 @end

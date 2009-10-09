@@ -30,5 +30,11 @@
  */
 
 #ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
+#import <Cocoa/Cocoa.h>
+
+#define TRUEPREVIEW_DELAY_MAX 30
+#define TRUEPREVIEW_DELAY_IMMEDIATE 0
+#define TRUEPREVIEW_DELAY_DEFAULT -1
+#define TRUEPREVIEW_DELAY_NEVER -2
+
 #endif

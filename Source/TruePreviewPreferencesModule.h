@@ -38,11 +38,7 @@
  * @updated $Date$
  */
 
-#import <AppKit/NSPreferences.h>
 #import <AppKit/NSPreferencesModule.h>
-#import <Message/MailAccount.h>
-
-#import "TruePreview.h"
 
 /*!
  * @class

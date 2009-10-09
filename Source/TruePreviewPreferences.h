@@ -38,21 +38,20 @@
  * @updated $Date$
  */
 
-#import <AppKit/NSPreferences.h>
-
 #import "TruePreview.h"
 
 /*!
- * @category
+ * @class
  * Adds a method for overriding the preference-loading behavior of
  * <code>NSPreferences</code>.
  * @version \@(#) $Id$
  * @updated $Date$
  */
-@interface NSPreferences (TruePreviewPreferences)
+@interface TruePreviewPreferences : NSObject {
+}
 
-#pragma mark Class methods
-/*! @group Class methods */
+#pragma mark Swizzled class methods
+/*! @group Swizzled class methods */
 
 /*!
  * Adds the TruePreview preferences.
