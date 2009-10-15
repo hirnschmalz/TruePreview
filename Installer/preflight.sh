@@ -36,4 +36,9 @@
 # @(#) $Id: postflight.sh 6 2009-06-27 08:17:43Z jhriggs $
 ##
 
-ln -s "$HOME" "/private/tmp/CurrentUser"
+if [ -L "/private/tmp/TruePreviewInstallerCurrentUser" ]
+then
+  rm -f "/private/tmp/TruePreviewInstallerCurrentUser"
+fi
+
+ln -s "$HOME" "/private/tmp/TruePreviewInstallerCurrentUser"

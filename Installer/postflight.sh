@@ -39,4 +39,4 @@
 defaults write com.apple.mail EnableBundles -bool YES
 defaults write com.apple.mail BundleCompatibilityVersion -int 3
 
-rm -f "/private/tmp/CurrentUser"
+rm -f "/private/tmp/TruePreviewInstallerCurrentUser"

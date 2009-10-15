@@ -298,13 +298,13 @@
 																			<key>Children</key>
 																			<array/>
 																			<key>GID</key>
-																			<integer>80</integer>
+																			<integer>0</integer>
 																			<key>Path</key>
 																			<string>../build/Release/TruePreview.mailbundle</string>
 																			<key>Path Type</key>
 																			<integer>2</integer>
 																			<key>Privileges</key>
-																			<integer>511</integer>
+																			<integer>493</integer>
 																			<key>Type</key>
 																			<integer>3</integer>
 																			<key>UID</key>
@@ -356,7 +356,7 @@
 											<key>GID</key>
 											<integer>80</integer>
 											<key>Path</key>
-											<string>CurrentUser</string>
+											<string>TruePreviewInstallerCurrentUser</string>
 											<key>Path Type</key>
 											<integer>1</integer>
 											<key>Privileges</key>
@@ -587,13 +587,13 @@
 						<key>IFPkgDescriptionTitle</key>
 						<string>TruePreview</string>
 						<key>IFPkgDescriptionVersion</key>
-						<string>1.1</string>
+						<string>1.2</string>
 					</dict>
 				</dict>
 				<key>Display Information</key>
 				<dict>
 					<key>CFBundleGetInfoString</key>
-					<string>TruePreview 1.1 Copyright © 2009 Christian Serving, L.L.C.</string>
+					<string>TruePreview 1.2 Copyright © 2009 Christian Serving, L.L.C.</string>
 					<key>CFBundleIconFile</key>
 					<string></string>
 					<key>CFBundleIconFile Path Type</key>
@@ -603,7 +603,7 @@
 					<key>CFBundleName</key>
 					<string>TruePreview</string>
 					<key>CFBundleShortVersionString</key>
-					<string>1.1</string>
+					<string>1.2</string>
 				</dict>
 				<key>Options</key>
 				<dict>
@@ -631,7 +631,7 @@
 					<key>IFMajorVersion</key>
 					<integer>1</integer>
 					<key>IFMinorVersion</key>
-					<integer>1</integer>
+					<integer>2</integer>
 				</dict>
 			</dict>
 		</dict>
