@@ -55,6 +55,36 @@
   [self truePreviewDealloc];
 }
 
+- (void)truePreviewForwardAsAttachment:(id)inSender {
+  id theMessage = [self currentDisplayedMessage];
+  
+  if ([theMessage isKindOfClass:NSClassFromString(@"LibraryMessage")]) {
+    NSDictionary* theSettings = [theMessage truePreviewSettings];
+    
+    if ([[theSettings objectForKey:@"forward"] boolValue]) {
+      [self truePreviewReset];
+      [theMessage truePreviewMarkAsViewed];
+    }
+  }
+  
+  [self truePreviewForwardAsAttachment:inSender];
+}
+
+- (void)truePreviewForwardMessage:(id)inSender {
+  id theMessage = [self currentDisplayedMessage];
+  
+  if ([theMessage isKindOfClass:NSClassFromString(@"LibraryMessage")]) {
+    NSDictionary* theSettings = [theMessage truePreviewSettings];
+    
+    if ([[theSettings objectForKey:@"forward"] boolValue]) {
+      [self truePreviewReset];
+      [theMessage truePreviewMarkAsViewed];
+    }
+  }
+  
+  [self truePreviewForwardMessage:inSender];
+}
+
 - (void)truePreviewMarkAsRead:(id)inSender {
   [self truePreviewReset];
   [self truePreviewMarkAsRead:inSender];
@@ -65,8 +95,24 @@
   [self truePreviewMarkAsUnread:inSender];
 }
 
+- (void)truePreviewMessageNoLongerDisplayedInTextView:(NSNotification*)inNotification {
+  [self truePreviewMessageNoLongerDisplayedInTextView:inNotification];
+
+  // we receive notifications from all MessageContentControllers
+  if ([inNotification object] != object_getIvar(self, class_getInstanceVariable([self class], "_contentController"))) {
+    return;
+  }
+  
+  [self truePreviewReset];
+}
+
 - (void)truePreviewMessageWasDisplayedInTextView:(NSNotification*)inNotification {
   [self truePreviewMessageWasDisplayedInTextView:inNotification];
+  
+  // we receive notifications from all MessageContentControllers
+  if ([inNotification object] != object_getIvar(self, class_getInstanceVariable([self class], "_contentController"))) {
+    return;
+  }
   
   id theMessage = [[inNotification userInfo] objectForKey:@"MessageKey"];
   
@@ -101,21 +147,49 @@
       ];
     }
     
-    if ([[theSettings objectForKey:@"scroll"] boolValue]) {
+    if (
+      ![self isKindOfClass:NSClassFromString(@"SingleMessageViewer")]
+      && [[theSettings objectForKey:@"scroll"] boolValue]
+    ) {
       // listen for bounds change notification on the message's clip view
       [[NSNotificationCenter defaultCenter]
-       addObserver:self
-       selector:@selector(truePreviewBoundsDidChange:)
-       name:NSViewBoundsDidChangeNotification
-       object:[[[[object_getIvar(self, class_getInstanceVariable([self class], "_contentController")) currentDisplay] contentView] enclosingScrollView] contentView]
-       ];
+        addObserver:self
+        selector:@selector(truePreviewBoundsDidChange:)
+        name:NSViewBoundsDidChangeNotification
+        object:[[[[object_getIvar(self, class_getInstanceVariable([self class], "_contentController")) currentDisplay] contentView] enclosingScrollView] contentView]
+      ];
     }    
   }
 }
 
-- (void)truePreviewMessageNoLongerDisplayedInTextView:(NSNotification*)inNotification {
-  [self truePreviewMessageNoLongerDisplayedInTextView:inNotification];
-  [self truePreviewReset];
+- (void)truePreviewReplyAllMessage:(id)inSender {
+  id theMessage = [self currentDisplayedMessage];
+  
+  if ([theMessage isKindOfClass:NSClassFromString(@"LibraryMessage")]) {
+    NSDictionary* theSettings = [theMessage truePreviewSettings];
+    
+    if ([[theSettings objectForKey:@"reply"] boolValue]) {
+      [self truePreviewReset];
+      [theMessage truePreviewMarkAsViewed];
+    }
+  }
+  
+  [self truePreviewReplyAllMessage:inSender];
+}
+
+- (void)truePreviewReplyMessage:(id)inSender {
+  id theMessage = [self currentDisplayedMessage];
+  
+  if ([theMessage isKindOfClass:NSClassFromString(@"LibraryMessage")]) {
+    NSDictionary* theSettings = [theMessage truePreviewSettings];
+
+    if ([[theSettings objectForKey:@"reply"] boolValue]) {
+      [self truePreviewReset];
+      [theMessage truePreviewMarkAsViewed];
+    }
+  }
+  
+  [self truePreviewReplyMessage:inSender];
 }
 
 #pragma mark Accessors

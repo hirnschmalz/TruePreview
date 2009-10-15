@@ -72,6 +72,22 @@
 - (void)truePreviewDealloc;
 
 /*!
+ * Marks the currently-displayed message as read if configured to do so when
+ * forwarding.
+ * @param inSender
+ *   Unused.
+ */
+- (void)truePreviewForwardAsAttachment:(id)inSender;
+
+/*!
+ * Marks the currently-displayed message as read if configured to do so when
+ * forwarding.
+ * @param inSender
+ *   Unused.
+ */
+- (void)truePreviewForwardMessage:(id)inSender;
+
+/*!
  * Invalidates this instance's timer and stops observing scroll changes when a
  * message is explicitly marked as read.
  * @param inSender
@@ -88,6 +104,13 @@
 - (void)truePreviewMarkAsUnread:(id)inSender;
 
 /*!
+ * Invalidates this instance's timer and stops observing scroll changes.
+ * @param inNotification
+ *   The <code>NSNotification</code> describing the event.
+ */
+- (void)truePreviewMessageNoLongerDisplayedInTextView:(NSNotification*)inNotification;
+
+/*!
  * Marks the displayed message as viewed, sets a timer to mark the displayed
  * message as viewed, and/or adds a notification observer to mark the message as
  * viewed when it is scrolled as appropriate.
@@ -97,11 +120,20 @@
 - (void)truePreviewMessageWasDisplayedInTextView:(id)inNotification;
 
 /*!
- * Invalidates this instance's timer and stops observing scroll changes.
- * @param inNotification
- *   The <code>NSNotification</code> describing the event.
+ * Marks the currently-displayed message as read if configured to do so when
+ * replying.
+ * @param inSender
+ *   Unused.
  */
-- (void)truePreviewMessageNoLongerDisplayedInTextView:(NSNotification*)inNotification;
+- (void)truePreviewReplyAllMessage:(id)inSender;
+
+/*!
+ * Marks the currently-displayed message as read if configured to do so when
+ * replying.
+ * @param inSender
+ *   Unused.
+ */
+- (void)truePreviewReplyMessage:(id)inSender;
 
 #pragma mark Accessors
 /*! @group Accessors */

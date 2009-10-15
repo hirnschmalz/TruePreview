@@ -15,13 +15,11 @@
 		41E061680FF1C1010087845D /* Message.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E061670FF1C1010087845D /* Message.framework */; };
 		41E061710FF1C1900087845D /* TruePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 41E061700FF1C1900087845D /* TruePreview.m */; };
 		41E063D70FF1CDCF0087845D /* TruePreviewPreferencesPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41E063D60FF1CDCF0087845D /* TruePreviewPreferencesPanel.xib */; };
-		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCF630370AF2F00C91783 /* TruePreview_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TruePreview_Prefix.pch; path = Source/TruePreview_Prefix.pch; sourceTree = "<group>"; };
@@ -38,6 +36,7 @@
 		412C2A4E1072F901005F5DC9 /* TruePreviewMessageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TruePreviewMessageViewer.h; path = Source/TruePreviewMessageViewer.h; sourceTree = "<group>"; };
 		412C2A4F1072F901005F5DC9 /* TruePreviewMessageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TruePreviewMessageViewer.m; path = Source/TruePreviewMessageViewer.m; sourceTree = "<group>"; };
 		412C2D61107EB8DA005F5DC9 /* NSPreferencesModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSPreferencesModule.h; sourceTree = "<group>"; };
+		4147E8951081148E00B3C650 /* German */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = German; path = German.lproj/TruePreviewPreferencesPanel.xib; sourceTree = "<group>"; };
 		41E061670FF1C1010087845D /* Message.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Message.framework; path = /System/Library/Frameworks/Message.framework; sourceTree = "<absolute>"; };
 		41E0616F0FF1C1900087845D /* TruePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TruePreview.h; path = Source/TruePreview.h; sourceTree = "<group>"; };
 		41E061700FF1C1900087845D /* TruePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TruePreview.m; path = Source/TruePreview.m; sourceTree = "<group>"; };
@@ -87,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				8D5B49B7048680CD000E48DA /* Info.plist */,
-				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
 				41E063D60FF1CDCF0087845D /* TruePreviewPreferencesPanel.xib */,
 			);
 			name = Resources;
@@ -201,7 +199,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */,
 				41E063D70FF1CDCF0087845D /* TruePreviewPreferencesPanel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,18 +239,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		089C167DFE841241C02AAC07 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				089C167EFE841241C02AAC07 /* English */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		41E063D60FF1CDCF0087845D /* TruePreviewPreferencesPanel.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				41E063D40FF1CDC90087845D /* English */,
+				4147E8951081148E00B3C650 /* German */,
 			);
 			name = TruePreviewPreferencesPanel.xib;
 			sourceTree = "<group>";

@@ -73,6 +73,16 @@
     isClassMethod:NO
   ];
   [NSClassFromString(@"MessageViewer")
+    truePreviewSwizzleMethod:@selector(forwardAsAttachment:)
+    withMethod:@selector(truePreviewForwardAsAttachment:)
+    isClassMethod:NO
+  ];
+  [NSClassFromString(@"MessageViewer")
+    truePreviewSwizzleMethod:@selector(forwardMessage:)
+    withMethod:@selector(truePreviewForwardMessage:)
+    isClassMethod:NO
+  ];
+  [NSClassFromString(@"MessageViewer")
     truePreviewSwizzleMethod:@selector(markAsRead:)
     withMethod:@selector(truePreviewMarkAsRead:)
     isClassMethod:NO
@@ -83,13 +93,23 @@
     isClassMethod:NO
   ];
   [NSClassFromString(@"MessageViewer")
+    truePreviewSwizzleMethod:@selector(messageNoLongerDisplayedInTextView:)
+    withMethod:@selector(truePreviewMessageNoLongerDisplayedInTextView:)
+    isClassMethod:NO
+  ];
+  [NSClassFromString(@"MessageViewer")
     truePreviewSwizzleMethod:@selector(messageWasDisplayedInTextView:)
     withMethod:@selector(truePreviewMessageWasDisplayedInTextView:)
     isClassMethod:NO
   ];
   [NSClassFromString(@"MessageViewer")
-    truePreviewSwizzleMethod:@selector(messageNoLongerDisplayedInTextView:)
-    withMethod:@selector(truePreviewMessageNoLongerDisplayedInTextView:)
+    truePreviewSwizzleMethod:@selector(replyAllMessage:)
+    withMethod:@selector(truePreviewReplyAllMessage:)
+    isClassMethod:NO
+  ];
+  [NSClassFromString(@"MessageViewer")
+    truePreviewSwizzleMethod:@selector(replyMessage:)
+    withMethod:@selector(truePreviewReplyMessage:)
     isClassMethod:NO
   ];
   [NSClassFromString(@"NSPreferences")
@@ -102,6 +122,8 @@
   [[NSUserDefaults standardUserDefaults]
     registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
       [NSNumber numberWithInt:TRUEPREVIEW_DELAY_IMMEDIATE], @"TruePreviewDelay",
+      [NSNumber numberWithInt:NSOnState], @"TruePreviewReply",
+      [NSNumber numberWithInt:NSOnState], @"TruePreviewForward",
       [NSNumber numberWithInt:NSOnState], @"TruePreviewWindow",
       [NSNumber numberWithInt:NSOffState], @"TruePreviewScroll",
       nil

@@ -52,6 +52,8 @@
     NSMutableDictionary* theAccount = [NSMutableDictionary dictionaryWithObjectsAndKeys:
       theDisplayName, @"displayName",
       [NSNumber numberWithInt:TRUEPREVIEW_DELAY_DEFAULT], @"delay",
+      [NSNumber numberWithInt:TRUEPREVIEW_DELAY_DEFAULT], @"reply",
+      [NSNumber numberWithInt:TRUEPREVIEW_DELAY_DEFAULT], @"forward",
       [NSNumber numberWithInt:TRUEPREVIEW_DELAY_DEFAULT], @"window",
       [NSNumber numberWithInt:TRUEPREVIEW_DELAY_DEFAULT], @"scroll",
       nil
@@ -66,6 +68,20 @@
     addObserver:self
     toObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [theAccounts count])]
     forKeyPath:@"delay"
+    options:0
+    context:theAccounts
+  ];
+  [theAccounts
+    addObserver:self
+    toObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [theAccounts count])]
+    forKeyPath:@"reply"
+    options:0
+    context:theAccounts
+  ];
+  [theAccounts
+    addObserver:self
+    toObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [theAccounts count])]
+    forKeyPath:@"forward"
     options:0
     context:theAccounts
   ];
@@ -94,11 +110,9 @@
     change:(NSDictionary*)inChange
     context:(void*)inContext {
   NSMutableDictionary* theAccountDict = [NSMutableDictionary dictionary];
-  NSEnumerator* theAccountEnum = [(NSArray*)inContext objectEnumerator];
-  NSDictionary* theAccount = nil;
   
   // build the account settings dictionary to save in the user defaults
-  while (theAccount = [theAccountEnum nextObject]) {
+  for (NSDictionary* theAccount in (NSArray*)inContext) {
     [theAccountDict setObject:theAccount forKey:[theAccount objectForKey:@"displayName"]];
   }
   

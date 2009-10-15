@@ -44,6 +44,8 @@
 - (NSMutableDictionary*)truePreviewSettings {
   NSMutableDictionary* theSettings = [NSMutableDictionary dictionaryWithObjectsAndKeys:
     [[NSUserDefaults standardUserDefaults] objectForKey:@"TruePreviewDelay"], @"delay",
+    [[NSUserDefaults standardUserDefaults] objectForKey:@"TruePreviewReply"], @"reply",
+    [[NSUserDefaults standardUserDefaults] objectForKey:@"TruePreviewForward"], @"forward",
     [[NSUserDefaults standardUserDefaults] objectForKey:@"TruePreviewWindow"], @"window",
     [[NSUserDefaults standardUserDefaults] objectForKey:@"TruePreviewScroll"], @"scroll",
     nil
@@ -54,7 +56,7 @@
   ];
   
   if (theAccountSettings != nil) {
-    for (id theKey in [NSArray arrayWithObjects:@"delay", @"window", @"scroll", nil]) {
+    for (id theKey in [NSArray arrayWithObjects:@"delay", @"reply", @"forward", @"window", @"scroll", nil]) {
       id theValue = [theAccountSettings objectForKey:theKey];
       
       if ((theValue != nil) && ([theValue intValue] != TRUEPREVIEW_DELAY_DEFAULT)) {
