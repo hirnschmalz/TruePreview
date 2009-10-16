@@ -459,7 +459,7 @@
 					<integer>0</integer>
 				</dict>
 				<key>IFPkgFlagDefaultLocation</key>
-				<string>/private/tmp/CurrentUser/Library/Mail/Bundles</string>
+				<string>/private/tmp/TruePreviewInstallerCurrentUser/Library/Mail/Bundles</string>
 				<key>Imported Package</key>
 				<false/>
 				<key>Package Path</key>
