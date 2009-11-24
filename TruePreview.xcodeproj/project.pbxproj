@@ -329,7 +329,7 @@
 				);
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
-				VALID_ARCHS = "i386 x86_64";
+				VALID_ARCHS = "ppc i386 x86_64";
 				WRAPPER_EXTENSION = mailbundle;
 			};
 			name = Release;

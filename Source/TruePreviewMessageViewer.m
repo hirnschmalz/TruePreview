@@ -151,10 +151,18 @@
       ![self isKindOfClass:NSClassFromString(@"SingleMessageViewer")]
       && [[theSettings objectForKey:@"scroll"] boolValue]
     ) {
+      // listen for selection change (mouse down) on message content view
+      [[NSNotificationCenter defaultCenter]
+        addObserver:self
+        selector:@selector(truePreviewMessageClickedOrScrolled:)
+        name:@"WebViewDidChangeSelectionNotification"
+        object:[[object_getIvar(self, class_getInstanceVariable([self class], "_contentController")) currentDisplay] contentView]
+      ];
+      
       // listen for bounds change notification on the message's clip view
       [[NSNotificationCenter defaultCenter]
         addObserver:self
-        selector:@selector(truePreviewBoundsDidChange:)
+        selector:@selector(truePreviewMessageClickedOrScrolled:)
         name:NSViewBoundsDidChangeNotification
         object:[[[[object_getIvar(self, class_getInstanceVariable([self class], "_contentController")) currentDisplay] contentView] enclosingScrollView] contentView]
       ];
@@ -219,6 +227,11 @@
   // stop observing when changed
   [[NSNotificationCenter defaultCenter]
     removeObserver:self
+    name:@"WebViewDidChangeSelectionNotification"
+    object:[[object_getIvar(self, class_getInstanceVariable([self class], "_contentController")) currentDisplay] contentView]
+  ];
+  [[NSNotificationCenter defaultCenter]
+    removeObserver:self
     name:NSViewBoundsDidChangeNotification
     object:[[[[object_getIvar(self, class_getInstanceVariable([self class], "_contentController")) currentDisplay] contentView] enclosingScrollView] contentView]
   ];
@@ -232,12 +245,12 @@
   }
 }
 
-- (void)truePreviewBoundsDidChange:(NSNotification*)inNotification {
+- (void)truePreviewMessageClickedOrScrolled:(NSNotification*)inNotification {
   // ignore the first time we get the notification; it may be an initial scroll
   // to the origin after changing messages
   static BOOL sIsFirstTime = YES;
   
-  if (sIsFirstTime) {
+  if ([NSViewBoundsDidChangeNotification isEqualToString:[inNotification name]] && sIsFirstTime) {
     sIsFirstTime = NO;
     
     return;

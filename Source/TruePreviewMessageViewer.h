@@ -172,6 +172,6 @@
  * @param inNotification
  *   Unused.
  */
-- (void)truePreviewBoundsDidChange:(NSNotification*)inNotification;
+- (void)truePreviewMessageClickedOrScrolled:(NSNotification*)inNotification;
 
 @end
