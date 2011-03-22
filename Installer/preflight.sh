@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2009, Jim Riggs, Christian Serving, L.L.C.
+# Copyright (c) 2009-2011, Jim Riggs, Christian Serving, L.L.C.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -31,7 +31,7 @@
 
 ##
 # preflight.sh
-# Copyright (c) 2009 Jim Riggs, Christian Serving, L.L.C. All rights reserved.
+# Copyright (c) 2009-2011 Jim Riggs, Christian Serving, L.L.C. All rights reserved.
 #
 # @(#) $Id: postflight.sh 6 2009-06-27 08:17:43Z jhriggs $
 ##
