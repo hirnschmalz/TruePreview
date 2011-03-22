@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009, Jim Riggs, Christian Serving, L.L.C.
+ * Copyright (c) 2009-2011, Jim Riggs, Christian Serving, L.L.C.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
  * @header
  * Defines the <code>TruePreviewMessageViewer</code> category for
  * <code>MessageViewer</code>.
- * @copyright Copyright (c) 2009 Jim Riggs, Christian Serving, L.L.C. All rights reserved.
+ * @copyright Copyright (c) 2009-2011 Jim Riggs, Christian Serving, L.L.C. All rights reserved.
  * @version \@(#) $Id: TruePreviewLibraryMessage.h 2 2009-06-27 07:02:45Z jhriggs $
  * @updated $Date: 2009-06-27 02:02:45 -0500 (Sat, 27 Jun 2009) $
  */

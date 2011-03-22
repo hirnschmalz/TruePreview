@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009, Jim Riggs, Christian Serving, L.L.C.
+ * Copyright (c) 2009-2011, Jim Riggs, Christian Serving, L.L.C.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
  * @header
  * Defines the <code>TruePreviewLibraryMessage</code> category for
  * <code>LibraryMessage</code>.
- * @copyright Copyright (c) 2009 Jim Riggs, Christian Serving, L.L.C. All rights reserved.
+ * @copyright Copyright (c) 2009-2011 Jim Riggs, Christian Serving, L.L.C. All rights reserved.
  * @version \@(#) $Id$
  * @updated $Date$
  */

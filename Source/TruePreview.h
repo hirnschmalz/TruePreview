@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009, Jim Riggs, Christian Serving, L.L.C.
+ * Copyright (c) 2009-2011, Jim Riggs, Christian Serving, L.L.C.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,7 @@
  * Defines the <code>TruePreview</code> Mail bundler (the entrypoint for the
  * plugin) and the <code>TruePreviewObject</code> category for
  * <code>NSObject</code>.
- * @copyright Copyright (c) 2009 Jim Riggs, Christian Serving, L.L.C. All rights reserved.
+ * @copyright Copyright (c) 2009-2011 Jim Riggs, Christian Serving, L.L.C. All rights reserved.
  * @version \@(#) $Id$
  * @updated $Date$
  */

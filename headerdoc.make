@@ -1,4 +1,4 @@
-# Copyright (c) 2009, Jim Riggs, Christian Serving, L.L.C.
+# Copyright (c) 2009-2011, Jim Riggs, Christian Serving, L.L.C.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -29,7 +29,7 @@
 
 ##
 # headerdoc.make
-# Copyright (c) 2009 Jim Riggs, Christian Serving, L.L.C. All rights reserved.
+# Copyright (c) 2009-2011 Jim Riggs, Christian Serving, L.L.C. All rights reserved.
 #
 # @(#) $Id$
 ##
