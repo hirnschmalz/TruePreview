@@ -304,7 +304,7 @@
 																							<key>Children</key>
 																							<array/>
 																							<key>GID</key>
-																							<integer>0</integer>
+																							<integer>80</integer>
 																							<key>Path</key>
 																							<string>../build/Release/TruePreview.mailbundle/Contents/Info.plist</string>
 																							<key>Path Type</key>
@@ -323,7 +323,7 @@
 																									<key>Children</key>
 																									<array/>
 																									<key>GID</key>
-																									<integer>0</integer>
+																									<integer>80</integer>
 																									<key>Path</key>
 																									<string>../build/Release/TruePreview.mailbundle/Contents/MacOS/TruePreview</string>
 																									<key>Path Type</key>
@@ -339,7 +339,7 @@
 																							<key>Expanded</key>
 																							<true/>
 																							<key>GID</key>
-																							<integer>0</integer>
+																							<integer>80</integer>
 																							<key>Path</key>
 																							<string>../build/Release/TruePreview.mailbundle/Contents/MacOS</string>
 																							<key>Path Type</key>
@@ -361,7 +361,7 @@
 																											<key>Children</key>
 																											<array/>
 																											<key>GID</key>
-																											<integer>0</integer>
+																											<integer>80</integer>
 																											<key>Path</key>
 																											<string>../build/Release/TruePreview.mailbundle/Contents/Resources/English.lproj/TruePreviewPreferencesPanel.nib</string>
 																											<key>Path Type</key>
@@ -377,7 +377,7 @@
 																									<key>Expanded</key>
 																									<true/>
 																									<key>GID</key>
-																									<integer>0</integer>
+																									<integer>80</integer>
 																									<key>Path</key>
 																									<string>../build/Release/TruePreview.mailbundle/Contents/Resources/English.lproj</string>
 																									<key>Path Type</key>
@@ -396,7 +396,7 @@
 																											<key>Children</key>
 																											<array/>
 																											<key>GID</key>
-																											<integer>0</integer>
+																											<integer>80</integer>
 																											<key>Path</key>
 																											<string>../build/Release/TruePreview.mailbundle/Contents/Resources/German.lproj/TruePreviewPreferencesPanel.nib</string>
 																											<key>Path Type</key>
@@ -412,7 +412,7 @@
 																									<key>Expanded</key>
 																									<true/>
 																									<key>GID</key>
-																									<integer>0</integer>
+																									<integer>80</integer>
 																									<key>Path</key>
 																									<string>../build/Release/TruePreview.mailbundle/Contents/Resources/German.lproj</string>
 																									<key>Path Type</key>
@@ -428,7 +428,7 @@
 																							<key>Expanded</key>
 																							<true/>
 																							<key>GID</key>
-																							<integer>0</integer>
+																							<integer>80</integer>
 																							<key>Path</key>
 																							<string>../build/Release/TruePreview.mailbundle/Contents/Resources</string>
 																							<key>Path Type</key>
@@ -444,7 +444,7 @@
 																					<key>Expanded</key>
 																					<true/>
 																					<key>GID</key>
-																					<integer>0</integer>
+																					<integer>80</integer>
 																					<key>Path</key>
 																					<string>../build/Release/TruePreview.mailbundle/Contents</string>
 																					<key>Path Type</key>
@@ -460,7 +460,7 @@
 																			<key>Expanded</key>
 																			<true/>
 																			<key>GID</key>
-																			<integer>0</integer>
+																			<integer>80</integer>
 																			<key>Path</key>
 																			<string>../build/Release/TruePreview.mailbundle</string>
 																			<key>Path Type</key>
@@ -734,7 +734,38 @@
 					</dict>
 				</dict>
 				<key>Requirements</key>
-				<array/>
+				<array>
+					<dict>
+						<key>AlertDialog</key>
+						<dict>
+							<key>International</key>
+							<dict>
+								<key>MessageKey</key>
+								<string>The version of Mail installed is too old.  Mail 5.0 (Lion) or newer is required.</string>
+								<key>TitleKey</key>
+								<string>This plugin only works with Mac OS X Lion.</string>
+							</dict>
+						</dict>
+						<key>LabelKey</key>
+						<string>Mail.app</string>
+						<key>Level</key>
+						<integer>0</integer>
+						<key>SpecArgument</key>
+						<string>/Applications/Mail.app</string>
+						<key>SpecProperty</key>
+						<string>CFBundleVersion</string>
+						<key>SpecTag</key>
+						<integer>0</integer>
+						<key>SpecType</key>
+						<string>bundle</string>
+						<key>Status</key>
+						<true/>
+						<key>TestObject</key>
+						<string>1244.2</string>
+						<key>TestOperator</key>
+						<string>&gt;=</string>
+					</dict>
+				</array>
 			</dict>
 			<key>Settings</key>
 			<dict>
@@ -749,13 +780,13 @@
 						<key>IFPkgDescriptionTitle</key>
 						<string>TruePreview</string>
 						<key>IFPkgDescriptionVersion</key>
-						<string>1.7</string>
+						<string>1.8a1</string>
 					</dict>
 				</dict>
 				<key>Display Information</key>
 				<dict>
 					<key>CFBundleGetInfoString</key>
-					<string>TruePreview 1.7 Copyright © 2009-2011 Christian Serving, L.L.C.</string>
+					<string>TruePreview 1.8a1 Copyright © 2009-2011 Christian Serving, L.L.C.</string>
 					<key>CFBundleIconFile</key>
 					<string></string>
 					<key>CFBundleIconFile Path Type</key>
@@ -765,14 +796,14 @@
 					<key>CFBundleName</key>
 					<string>TruePreview</string>
 					<key>CFBundleShortVersionString</key>
-					<string>1.7</string>
+					<string>1.8a1</string>
 				</dict>
 				<key>Options</key>
 				<dict>
 					<key>IFPkgFlagAllowBackRev</key>
 					<false/>
 					<key>IFPkgFlagAuthorizationAction</key>
-					<integer>0</integer>
+					<integer>1</integer>
 					<key>IFPkgFlagFollowLinks</key>
 					<true/>
 					<key>IFPkgFlagIsRequired</key>
@@ -793,7 +824,7 @@
 					<key>IFMajorVersion</key>
 					<integer>1</integer>
 					<key>IFMinorVersion</key>
-					<integer>7</integer>
+					<integer>8</integer>
 				</dict>
 			</dict>
 		</dict>

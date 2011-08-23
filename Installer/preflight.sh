@@ -42,3 +42,5 @@ then
 fi
 
 ln -s "$HOME" "/private/tmp/TruePreviewInstallerCurrentUser"
+
+osascript -e "quit app \"Mail\""
