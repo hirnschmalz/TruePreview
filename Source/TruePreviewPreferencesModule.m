@@ -36,10 +36,14 @@
 #pragma mark NSPreferencesModule instance methods
 
 - (NSString*)preferencesNibName {
+  TRUEPREVIEW_LOG();
+  
   return @"TruePreviewPreferencesPanel";
 }
 
 - (void)willBeDisplayed {
+  TRUEPREVIEW_LOG();
+  
   [super willBeDisplayed];
 
   // build the list of accounts
@@ -109,6 +113,8 @@
     ofObject:(id)inObject
     change:(NSDictionary*)inChange
     context:(void*)inContext {
+  TRUEPREVIEW_LOG(@"%@, %@, %@, %p", inPath, inObject, inChange, inContext);
+  
   NSMutableDictionary* theAccountDict = [NSMutableDictionary dictionary];
   
   // build the account settings dictionary to save in the user defaults
@@ -118,6 +124,12 @@
   
   [[NSUserDefaults standardUserDefaults] setObject:theAccountDict forKey:@"TruePreviewAccountSettings"];
   [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark Instance methods
+
+- (NSString*)truePreviewVersion {
+  return [[[NSBundle bundleForClass:[TruePreview class]] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
 
 @end

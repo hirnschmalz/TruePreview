@@ -36,6 +36,8 @@
 #pragma mark Swizzled class methods
 
 + (id)truePreviewSharedPreferences {
+  TRUEPREVIEW_LOG();
+  
   static BOOL sAdded = NO;
   id thePreferences = [NSClassFromString(@"NSPreferences") truePreviewSharedPreferences];
   

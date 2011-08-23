@@ -36,12 +36,16 @@
 #pragma mark NSValueTransformer class methods
 
 + (Class)transformedValueClass {
+  TRUEPREVIEW_LOG();
+  
   return [NSNumber class];
 }
 
 #pragma mark NSValueTransformer instance methods
 
 - (id)transformedValue:(id)inValue {
+  TRUEPREVIEW_LOG(@"%@", inValue);
+  
   float theValue = [inValue floatValue];
   
   if ((theValue > 0) && (theValue <= TRUEPREVIEW_DELAY_MAX)) {
@@ -66,12 +70,16 @@
 #pragma mark NSValueTransformer class methods
 
 + (Class)transformedValueClass {
+  TRUEPREVIEW_LOG();
+  
   return [NSNumber class];
 }
 
 #pragma mark NSValueTransformer instance methods
 
 - (id)transformedValue:(id)inValue {
+  TRUEPREVIEW_LOG(@"%@", inValue);
+  
   float theValue = [inValue floatValue];
 
   if ((theValue <= 0) || (theValue > TRUEPREVIEW_DELAY_MAX)) {
@@ -89,12 +97,16 @@
 #pragma mark NSValueTransformer class methods
 
 + (Class)transformedValueClass {
+  TRUEPREVIEW_LOG();
+  
   return [NSNumber class];
 }
 
 #pragma mark NSValueTransformer instance methods
 
 - (id)transformedValue:(id)inValue {
+  TRUEPREVIEW_LOG(@"%@", inValue);
+  
   float theValue = [inValue floatValue];
   
   return [NSNumber numberWithInt:((theValue > 0) && (theValue <= TRUEPREVIEW_DELAY_MAX))];
