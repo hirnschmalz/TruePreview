@@ -40,6 +40,8 @@
 
 #import <AppKit/NSPreferencesModule.h>
 
+#import "TruePreview.h"
+
 /*!
  * @class
  * The <code>TruePreviewPreferencesModule</code> class is the subclass of
