@@ -50,15 +50,6 @@
 @interface TruePreviewLibraryMessage : NSObject {
 }
 
-#pragma mark Swizzled instance methods
-/*! @group Swizzled instance methods */
-
-/*!
- * Does nothing.  The replacement behavior is handled in
- * <code>TruePreviewMessageViewer</code>.
- */
-- (void)truePreviewMarkAsViewed;
-
 #pragma mark Instance methods
 /*! @group Instance methods */
 

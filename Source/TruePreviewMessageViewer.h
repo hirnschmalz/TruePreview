@@ -104,16 +104,24 @@
 - (void)truePreviewMarkAsUnread:(id)inSender;
 
 /*!
- * Invalidates this instance's timer and stops observing scroll changes.
- * @param inNotification
- *   The <code>NSNotification</code> describing the event.
+ * Calls <code>truePreviewCreateTimer:</code> to mark the provided message as
+ * read based on the current preferences.
+ * @param inMessage
+ *   The message being marked as read.
  */
-- (void)truePreviewMessageNoLongerDisplayedInTextView:(NSNotification*)inNotification;
+- (void)truePreviewMarkMessageAsViewed:(id)inMessage;
 
 /*!
- * Marks the displayed message as viewed, sets a timer to mark the displayed
- * message as viewed, and/or adds a notification observer to mark the message as
- * viewed when it is scrolled as appropriate.
+ * Calls <code>truePreviewCreateTimer:</code> to mark the provided messages as
+ * read based on the current preferences.
+ * @param inMessage
+ *   The <code>NSArray</code> of messages being marked as read.
+ */
+- (void)truePreviewMarkMessagesAsViewed:(NSArray*)inMessages;
+
+/*!
+ * Adds a notification observer to mark the message as viewed when it is
+ * scrolled as appropriate.
  * @param inNotification
  *   The <code>NSNotification</code> describing the event.
  */
@@ -135,6 +143,11 @@
  */
 - (void)truePreviewReplyMessage:(id)inSender;
 
+/*!
+ * Invalidates this instance's timer.
+ */
+- (void)truePreviewSelectedMessagesDidChangeInMessageList;
+
 #pragma mark Accessors
 /*! @group Accessors */
 
@@ -154,6 +167,14 @@
 
 #pragma mark Instance methods
 /*! @group Instance methods */
+
+/*!
+ * Creates and sets a timer for this instance based on its settings.
+ * @param inMessages
+ *   The <code>LibraryMessage</code> or <code>NSArray</code> of messages for
+ *   which the timer is being created.
+ */
+- (void)truePreviewCreateTimer:(id)inMessages;
 
 /*!
  * Invalidates this instance's timer and stops observing scroll changes.

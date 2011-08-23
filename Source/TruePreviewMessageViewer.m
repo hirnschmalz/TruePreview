@@ -36,6 +36,8 @@
 #pragma mark Class methods
 
 + (NSMutableDictionary*)truePreviewTimers {
+  TRUEPREVIEW_LOG();
+  
   static NSMutableDictionary* sTimers = nil;
   
   if (sTimers == nil) {
@@ -48,14 +50,18 @@
 #pragma mark Swizzled instance methods
 
 - (void)truePreviewDealloc {
+  TRUEPREVIEW_LOG();
+  
   [self truePreviewReset];
   [[[self class] truePreviewTimers]
-    removeObjectForKey:[NSNumber numberWithUnsignedLong:(unsigned long)self]
+    removeObjectForKey:[NSNumber numberWithUnsignedLongLong:(unsigned long long)self]
   ];
   [self truePreviewDealloc];
 }
 
 - (void)truePreviewForwardAsAttachment:(id)inSender {
+  TRUEPREVIEW_LOG(@"%@", inSender);
+  
   id theMessage = [self currentDisplayedMessage];
   
   if ([theMessage isKindOfClass:NSClassFromString(@"LibraryMessage")]) {
@@ -63,7 +69,7 @@
     
     if ([[theSettings objectForKey:@"forward"] boolValue]) {
       [self truePreviewReset];
-      [theMessage truePreviewMarkAsViewed];
+      [self truePreviewMarkMessagesAsViewed:[NSArray arrayWithObject:theMessage]];
     }
   }
   
@@ -71,6 +77,8 @@
 }
 
 - (void)truePreviewForwardMessage:(id)inSender {
+  TRUEPREVIEW_LOG(@"%@", inSender);
+  
   id theMessage = [self currentDisplayedMessage];
   
   if ([theMessage isKindOfClass:NSClassFromString(@"LibraryMessage")]) {
@@ -78,7 +86,7 @@
     
     if ([[theSettings objectForKey:@"forward"] boolValue]) {
       [self truePreviewReset];
-      [theMessage truePreviewMarkAsViewed];
+      [self truePreviewMarkMessagesAsViewed:[NSArray arrayWithObject:theMessage]];
     }
   }
   
@@ -86,29 +94,37 @@
 }
 
 - (void)truePreviewMarkAsRead:(id)inSender {
+  TRUEPREVIEW_LOG(@"%@", inSender);
+  
   [self truePreviewReset];
   [self truePreviewMarkAsRead:inSender];
 }
 
 - (void)truePreviewMarkAsUnread:(id)inSender {
+  TRUEPREVIEW_LOG(@"%@", inSender);
+  
   [self truePreviewReset];
   [self truePreviewMarkAsUnread:inSender];
 }
 
-- (void)truePreviewMessageNoLongerDisplayedInTextView:(NSNotification*)inNotification {
-  [self truePreviewMessageNoLongerDisplayedInTextView:inNotification];
-
-  // we receive notifications from all MessageContentControllers
-  if ([inNotification object] != object_getIvar(self, class_getInstanceVariable([self class], "_contentController"))) {
-    return;
-  }
+- (void)truePreviewMarkMessageAsViewed:(id)inMessage {
+  TRUEPREVIEW_LOG(@"%@", inMessage);
   
-  [self truePreviewReset];
+  [self truePreviewCreateTimer:inMessage];
+}
+
+- (void)truePreviewMarkMessagesAsViewed:(NSArray*)inMessages  {
+  TRUEPREVIEW_LOG(@"%@", inMessages);
+
+  [self truePreviewCreateTimer:inMessages];
 }
 
 - (void)truePreviewMessageWasDisplayedInTextView:(NSNotification*)inNotification {
-  [self truePreviewMessageWasDisplayedInTextView:inNotification];
+  TRUEPREVIEW_LOG(@"%@", inNotification);
   
+  [self truePreviewMessageWasDisplayedInTextView:inNotification];  
+  [self truePreviewReset];
+/* TODO: IN PROGRESS
   // we receive notifications from all MessageContentControllers
   if ([inNotification object] != object_getIvar(self, class_getInstanceVariable([self class], "_contentController"))) {
     return;
@@ -127,7 +143,7 @@
       )        
     ) {
       [self truePreviewReset];
-      [theMessage truePreviewMarkAsViewed];
+      [self truePreviewMarkMessagesAsViewed:[NSArray arrayWithObject:theMessage]];
       
       return;
     }
@@ -168,9 +184,12 @@
       ];
     }    
   }
+*/
 }
 
 - (void)truePreviewReplyAllMessage:(id)inSender {
+  TRUEPREVIEW_LOG(@"%@", inSender);
+  
   id theMessage = [self currentDisplayedMessage];
   
   if ([theMessage isKindOfClass:NSClassFromString(@"LibraryMessage")]) {
@@ -178,7 +197,7 @@
     
     if ([[theSettings objectForKey:@"reply"] boolValue]) {
       [self truePreviewReset];
-      [theMessage truePreviewMarkAsViewed];
+      [self truePreviewMarkMessagesAsViewed:[NSArray arrayWithObject:theMessage]];
     }
   }
   
@@ -186,6 +205,8 @@
 }
 
 - (void)truePreviewReplyMessage:(id)inSender {
+  TRUEPREVIEW_LOG(@"%@", inSender);
+  
   id theMessage = [self currentDisplayedMessage];
   
   if ([theMessage isKindOfClass:NSClassFromString(@"LibraryMessage")]) {
@@ -193,31 +214,94 @@
 
     if ([[theSettings objectForKey:@"reply"] boolValue]) {
       [self truePreviewReset];
-      [theMessage truePreviewMarkAsViewed];
+      [self truePreviewMarkMessagesAsViewed:[NSArray arrayWithObject:theMessage]];
     }
   }
   
   [self truePreviewReplyMessage:inSender];
 }
 
+- (void)truePreviewSelectedMessagesDidChangeInMessageList {
+  TRUEPREVIEW_LOG();
+  
+  [self truePreviewReset];
+  [self truePreviewSelectedMessagesDidChangeInMessageList];
+}
+
 #pragma mark Accessors
 
 - (NSTimer*)truePreviewTimer {
+  TRUEPREVIEW_LOG();
+  
   return [[[self class] truePreviewTimers]
-    objectForKey:[NSNumber numberWithUnsignedLong:(unsigned long)self]
+    objectForKey:[NSNumber numberWithUnsignedLongLong:(unsigned long long)self]
   ];
 }
 
 - (void)truePreviewSetTimer:(NSTimer*)inTimer {
+  TRUEPREVIEW_LOG(@"%@ (userInfo: %@)", inTimer, [inTimer userInfo]);
+  
   [[[self class] truePreviewTimers]
     setObject:inTimer
-    forKey:[NSNumber numberWithUnsignedLong:(unsigned long)self]
+    forKey:[NSNumber numberWithUnsignedLongLong:(unsigned long long)self]
   ];
 }
 
 #pragma mark Instance methods
 
+- (void)truePreviewCreateTimer:(id)inMessages {
+  TRUEPREVIEW_LOG(@"%@", inMessages);
+  
+  if (![inMessages isKindOfClass:[NSArray class]]) {
+    inMessages = [NSArray arrayWithObject:inMessages];
+  }
+  else {
+    inMessages = [[inMessages copy] autorelease];
+  }
+  
+  id theMessage = [inMessages objectAtIndex:0];
+
+  if (
+    ![theMessage isKindOfClass:NSClassFromString(@"LibraryMessage")]
+    || ![[self currentDisplayedMessage] isKindOfClass:NSClassFromString(@"LibraryMessage")]
+  ) {
+    return;
+  }
+
+  NSDictionary* theSettings = [theMessage truePreviewSettings];
+  
+  if (
+    ([[theSettings objectForKey:@"delay"] floatValue] == TRUEPREVIEW_DELAY_IMMEDIATE)
+    || (
+      [[theSettings objectForKey:@"window"] boolValue]
+      && [self isKindOfClass:NSClassFromString(@"SingleMessageViewer")]
+    )        
+  ) {
+    [self truePreviewReset];
+    [self truePreviewMarkMessagesAsViewed:inMessages];
+    
+    return;
+  }
+
+  float theDelay = [[theSettings objectForKey:@"delay"] floatValue];
+  
+  if (theDelay > TRUEPREVIEW_DELAY_IMMEDIATE) {
+    [self truePreviewReset];
+    [self
+      truePreviewSetTimer:[NSTimer
+        scheduledTimerWithTimeInterval:theDelay
+        target:self
+        selector:@selector(truePreviewTimerFired:)
+        userInfo:inMessages
+        repeats:NO
+      ]
+    ];
+  }
+}
+
 - (void)truePreviewReset {
+  TRUEPREVIEW_LOG();
+  
   NSTimer* theTimer = [self truePreviewTimer];
 
   if ((theTimer != nil) && [theTimer isValid]) {
@@ -238,14 +322,17 @@
 }
 
 - (void)truePreviewTimerFired:(NSTimer*)inTimer {
-  [self truePreviewReset];
+  TRUEPREVIEW_LOG(@"%@ (userInfo: %@)", inTimer, [inTimer userInfo]);
   
-  if ([[self currentDisplayedMessage] isKindOfClass:NSClassFromString(@"LibraryMessage")]) {
-    [[self currentDisplayedMessage] truePreviewMarkAsViewed];
-  }
+  id theMessages = [inTimer userInfo];
+  
+  [self truePreviewReset];
+  [self truePreviewMarkMessagesAsViewed:theMessages];
 }
 
 - (void)truePreviewMessageClickedOrScrolled:(NSNotification*)inNotification {
+  TRUEPREVIEW_LOG(@"%@", inNotification);
+  
   // ignore the first time we get the notification; it may be an initial scroll
   // to the origin after changing messages
   static BOOL sIsFirstTime = YES;

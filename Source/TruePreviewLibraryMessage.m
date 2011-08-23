@@ -33,15 +33,11 @@
 
 @implementation TruePreviewLibraryMessage
 
-#pragma mark Swizzled instance methods
-
-- (void)truePreviewMarkAsViewed {
-  /* nothing */
-}
-
 #pragma mark Instance methods
 
 - (NSMutableDictionary*)truePreviewSettings {
+  TRUEPREVIEW_LOG();
+  
   NSMutableDictionary* theSettings = [NSMutableDictionary dictionaryWithObjectsAndKeys:
     [[NSUserDefaults standardUserDefaults] objectForKey:@"TruePreviewDelay"], @"delay",
     [[NSUserDefaults standardUserDefaults] objectForKey:@"TruePreviewReply"], @"reply",

@@ -36,6 +36,8 @@
 #pragma mark Class initialization
 
 + (void)initialize {
+  TRUEPREVIEW_LOG();
+  
   if (self == [TruePreview class]) {
     class_setSuperclass(self, NSClassFromString(@"MVMailBundle"));
   }
@@ -62,16 +64,22 @@
   [TruePreviewPreferences truePreviewAddAsCategoryToClass:NSClassFromString(@"NSPreferences")];
   
   // do our swizzles
-  [NSClassFromString(@"LibraryMessage")
-    truePreviewSwizzleMethod:@selector(markAsViewed)
-    withMethod:@selector(truePreviewMarkAsViewed)
-    isClassMethod:NO
-  ];
   [NSClassFromString(@"MessageViewer")
     truePreviewSwizzleMethod:@selector(dealloc)
     withMethod:@selector(truePreviewDealloc)
     isClassMethod:NO
   ];
+  [NSClassFromString(@"MessageViewer")
+    truePreviewSwizzleMethod:@selector(markMessageAsViewed:)
+    withMethod:@selector(truePreviewMarkMessageAsViewed:)
+    isClassMethod:NO
+  ];
+  [NSClassFromString(@"MessageViewer")
+    truePreviewSwizzleMethod:@selector(markMessagesAsViewed:)
+    withMethod:@selector(truePreviewMarkMessagesAsViewed:)
+    isClassMethod:NO
+  ];
+/* TODO: IN PROGRESS
   [NSClassFromString(@"MessageViewer")
     truePreviewSwizzleMethod:@selector(forwardAsAttachment:)
     withMethod:@selector(truePreviewForwardAsAttachment:)
@@ -93,16 +101,6 @@
     isClassMethod:NO
   ];
   [NSClassFromString(@"MessageViewer")
-    truePreviewSwizzleMethod:@selector(messageNoLongerDisplayedInTextView:)
-    withMethod:@selector(truePreviewMessageNoLongerDisplayedInTextView:)
-    isClassMethod:NO
-  ];
-  [NSClassFromString(@"MessageViewer")
-    truePreviewSwizzleMethod:@selector(messageWasDisplayedInTextView:)
-    withMethod:@selector(truePreviewMessageWasDisplayedInTextView:)
-    isClassMethod:NO
-  ];
-  [NSClassFromString(@"MessageViewer")
     truePreviewSwizzleMethod:@selector(replyAllMessage:)
     withMethod:@selector(truePreviewReplyAllMessage:)
     isClassMethod:NO
@@ -110,6 +108,12 @@
   [NSClassFromString(@"MessageViewer")
     truePreviewSwizzleMethod:@selector(replyMessage:)
     withMethod:@selector(truePreviewReplyMessage:)
+    isClassMethod:NO
+  ];
+*/
+  [NSClassFromString(@"MessageViewer")
+    truePreviewSwizzleMethod:@selector(selectedMessagesDidChangeInMessageList)
+    withMethod:@selector(truePreviewSelectedMessagesDidChangeInMessageList)
     isClassMethod:NO
   ];
   [NSClassFromString(@"NSPreferences")
@@ -140,14 +144,20 @@
 #pragma mark MVMailBundle class methods
 
 + (BOOL)hasPreferencesPanel {
+  TRUEPREVIEW_LOG();
+  
   return YES;
 }
 
 + (NSString*)preferencesOwnerClassName {
+  TRUEPREVIEW_LOG();
+  
   return @"TruePreviewPreferencesModule";
 }
 
 + (NSString*)preferencesPanelName {
+  TRUEPREVIEW_LOG();
+  
   return @"TruePreview";
 }
 
@@ -158,6 +168,8 @@
 #pragma mark Class methods
 
 + (void)truePreviewAddAsCategoryToClass:(Class)inClass {
+  TRUEPREVIEW_LOG(@"%@", inClass);
+  
   unsigned int theCount = 0;
   Method* theMethods = class_copyMethodList(object_getClass([self class]), &theCount);
   Class theClass = object_getClass(inClass);
@@ -203,6 +215,13 @@
   Method theReplacementMethod = (!inIsClassMethod
     ? class_getInstanceMethod([self class], inReplacementSelector)
     : class_getClassMethod([self class], inReplacementSelector)
+  );
+
+  TRUEPREVIEW_LOG(
+    @"%s (%p), %s (%p), %s",
+    sel_getName(inOriginalSelector), method_getImplementation(theOriginalMethod),
+    sel_getName(inReplacementSelector), method_getImplementation(theReplacementMethod),
+    (inIsClassMethod ? "YES" : "NO")
   );
 
   method_exchangeImplementations(theOriginalMethod, theReplacementMethod);
