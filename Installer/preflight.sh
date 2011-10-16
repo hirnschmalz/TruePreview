@@ -30,13 +30,17 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ##
-# preinstall.sh
+# preflight.sh
 # Copyright (c) 2009-2011 Jim Riggs, Christian Serving, L.L.C. All rights reserved.
 #
-# @(#) $Id: postflight.sh 53 2011-08-23 16:00:04Z jhriggs $
+# @(#) $Id: postflight.sh 6 2009-06-27 08:17:43Z jhriggs $
 ##
 
-if [ -d "$HOME/Library/Mail/Bundles" ]
+if [ -L "/private/tmp/TruePreviewInstallerCurrentUser" ]
 then
-  sudo chown -R "$USER" "$HOME/Library/Mail/Bundles"
+  rm -f "/private/tmp/TruePreviewInstallerCurrentUser"
 fi
+
+ln -s "$HOME" "/private/tmp/TruePreviewInstallerCurrentUser"
+
+osascript -e "quit app \"Mail\""

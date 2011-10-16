@@ -30,11 +30,15 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ##
-# postinstall.sh
+# postflight.sh
 # Copyright (c) 2009-2011 Jim Riggs, Christian Serving, L.L.C. All rights reserved.
 #
-# @(#) $Id: postflight.sh 53 2011-08-23 16:00:04Z jhriggs $
+# @(#) $Id$
 ##
 
-defaults write "com.apple.mail" EnableBundles -bool YES
-defaults write "com.apple.mail" BundleCompatibilityVersion -int 4
+defaults write "$HOME/Library/Preferences/com.apple.mail" EnableBundles -bool YES
+defaults write "$HOME/Library/Preferences/com.apple.mail" BundleCompatibilityVersion -int 4
+chown "$USER" "$HOME/Library/Preferences/com.apple.mail."*
+chown -R "$USER" "$HOME/Library/Mail/Bundles"
+
+rm -f "/private/tmp/TruePreviewInstallerCurrentUser"
