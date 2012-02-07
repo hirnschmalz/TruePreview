@@ -1069,7 +1069,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
                       <int key="NSCellFlags">70385217</int>
                       <int key="NSCellFlags2">1346671616</int>
                       <object class="NSAttributedString" key="NSContents">
-                        <string key="NSString">TruePreview copyright © 2009-2011 Jim Riggs, Christian Serving, L.L.C.  All rights reserved.</string>
+                        <string key="NSString">TruePreview copyright © 2009-2012 Jim Riggs, Christian Serving, L.L.C.  All rights reserved.</string>
                         <object class="NSMutableArray" key="NSAttributes">
                           <bool key="EncodedWithXMLCoder">YES</bool>
                           <object class="NSDictionary">
