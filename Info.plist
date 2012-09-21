@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1.8a4</string>
+	<string>1.8a5</string>
 	<key>NSPrincipalClass</key>
 	<string>TruePreview</string>
 	<key>SupportedPluginCompatibilityUUIDs</key>
@@ -31,6 +31,8 @@
 		<string>EF59EC5E-EFCD-4EA7-B617-6C5708397D24</string>
 		<string>4C286C70-7F18-4839-B903-6F2D58FA4C71</string>
 		<string>608CE00F-4576-4CAD-B362-F3CCB7DE8D67</string>
+		<string>3335F782-01E2-4DF1-9E61-F81314124212</string>
+		<string>758F235A-2FD0-4660-9B52-102CD0EA897F</string>
 	</array>
 </dict>
 </plist>
