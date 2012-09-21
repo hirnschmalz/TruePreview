@@ -36,9 +36,7 @@
 # @(#) $Id$
 ##
 
-defaults write "$HOME/Library/Preferences/com.apple.mail" EnableBundles -bool YES
-defaults write "$HOME/Library/Preferences/com.apple.mail" BundleCompatibilityVersion -int 4
-chown "$USER" "$HOME/Library/Preferences/com.apple.mail."*
-chown -R "$USER" "$HOME/Library/Mail/Bundles"
-
 rm -f "/private/tmp/TruePreviewInstallerCurrentUser"
+chown -R "$USER" "$HOME/Library/Mail/Bundles"
+su "$USER" -c '/usr/bin/defaults write "com.apple.mail" EnableBundles -bool YES'
+su "$USER" -c '/usr/bin/defaults write "com.apple.mail" BundleCompatibilityVersion -int 4'
